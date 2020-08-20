@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseFirstApproach;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,20 @@ namespace App.UserInterface
     {
         static void Main(string[] args)
         {
-            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            var userNamse = System.Security.Principal.WindowsIdentity.GetCurrent().Owner;
+            using (var context = new AdventureWorks())
+            {
+                var product = new ProductModel()
+                {
+                    CatalogDescription = "des",
+                    ModifiedDate = DateTime.Today,
+                    Name = "name",
+                    rowguid = Guid.NewGuid(),
+                    ProductModelID = 18513
+                };
+
+                context.ProductModels.Add(product);
+                context.SaveChanges();
+            }
         }
     }
 }
