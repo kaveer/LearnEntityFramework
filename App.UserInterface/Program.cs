@@ -10,6 +10,8 @@ namespace App.UserInterface
     {
         static void Main(string[] args)
         {
+            string userName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            var userNamse = System.Security.Principal.WindowsIdentity.GetCurrent().Owner;
         }
     }
 }
